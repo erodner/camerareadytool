@@ -7,9 +7,10 @@ use strict;
 
 my @keywords = qw(includegraphics input bibliography documentclass bibliographystyle);
 
-my $extensions = { 'documentclass' => 'cls',
+my $extensions = { 'documentclass' => '{cls,sty}',
                    'bibliography' => 'bib',
-				           'includegraphics' => '{eps,pdf,jpg,png,jpeg,ps}',
+				   'includegraphics' => '{eps,pdf,jpg,png,jpeg,ps}',
+                   'input' => 'tex',
                    'bibliographystyle' => 'bst' };
 
 my @files = @ARGV;
