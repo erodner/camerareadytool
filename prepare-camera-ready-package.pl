@@ -8,6 +8,7 @@ use strict;
 my @keywords = qw(includegraphics input bibliography documentclass bibliographystyle);
 
 my $extensions = { 'documentclass' => '{cls,sty}',
+                   'usepackage' => '{sty}',
                    'bibliography' => 'bib',
 				   'includegraphics' => '{eps,pdf,jpg,png,jpeg,ps}',
                    'input' => 'tex',
