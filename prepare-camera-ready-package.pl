@@ -43,6 +43,11 @@ for my $file (@files)
     # ignore latex comments for parsing
     /^\s*%/ && next;
 
+    # parse graphicspath
+    if ( /\\graphicspath\{(.+?)\}\s*$/) {
+        $paths = $1
+    }
+
     # search for each latex command keywords
     for my $k ( @keywords )
     {
