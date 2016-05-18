@@ -26,6 +26,7 @@ if ( !scalar(@files) )
 
 # hash to avoid duplicate outputs
 my %h;
+my $paths;
 
 for my $file (@files)
 {
