@@ -24,7 +24,8 @@ open ( FILE, "<$file" ) or die ("$file: $!\n");
 while (<FILE>)
 {
     my $f;
-   
+    my $skipline = 0;
+
    next if ( /^ *%/ );
 
     if ( /\\begin\{figure.?\}/ )
@@ -61,7 +62,22 @@ while (<FILE>)
         $subfignr++;
     }
 
-    print $_;
+    if ( /input\{([^\}]+)\}/  )
+    {
+        $skipline = 1;
+        my $subfn = $1;
+        if ( ! -e $subfn ) {
+            $subfn = "$subfn.tex";
+        }
+        open ( SUBFILE, "<$subfn" ) or die ("$subfn: $!");
+        print <SUBFILE>;
+        close ( SUBFILE );
+        print "\n";
+    }
+
+    if (! $skipline ) {
+        print $_;
+    }
 }
 
 close ( FILE );
